@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>{{DATA.USER_NAME}} Portfolio</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  
+  <style>
+  .fakeimg {
+    height: 200px;
+    background: #aaa;
+  }
+  </style>
+</head>
+<body>
+
+<div class="jumbotron text-center"  style = " border-radius: 0px; margin: 0px; background-color: black; color: whitesmoke;">
+  <h1>My Portfolio</h1>
+  <p>I define myself!</p> 
+</div>
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark" style="border-color: whitesmoke; border-style: solid;">
+  <a class="navbar-brand" href="#">Home</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="#about">About</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#photos">Photos</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#diet">Diet</a>
+      </li> 
+      <li class="nav-item">
+        <a class="nav-link" href="#execises">Execises</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#events">Events</a>
+      </li>   
+    </ul>
+  </div>  
+</nav>
+
+<div class="container" style="margin-top: 3px;">
+    <div class="row" contenteditable="true" style="background-image: url({{DATA.USER_PROFILE_IMAGE.url}}); background-attachment: fixed; background-size: cover;">
+    <div class="col-sm-3" style="height:300px;">
+        <div class="text">
+        <h1 style="color:whitesmoke; font-family: Arial, Helvetica, sans-serif;">{{DATA.USER_NAME}}</h1>
+        <p style=" font-family: Arial, Helvetica, sans-serif; color:whitesmoke;">{{DATA.USER_MOTIVATION_LINE}}</p>
+        </div>
+    </div>
+    
+    
+    <div class="col-sm-12" style=" color:white; background-color:black; opacity: 0.6; margin-top: 10px; ">
+        <h3><a name = "about">About me</a></h3>
+        <div class="text" style=" width: 50%; font-family: Arial, Helvetica, sans-serif ">
+            {{DATA.USER_DESCRIPTION}}
+        </div>
+    </div>
+    </div>
+
+    <div class="row" style="margin-top: 10px;">
+        <h3 class="col-sm-12"><a name="photos">Photos</a></h3>
+        {% for Photo in User_Images %}
+        <div class="col-sm-2" style=" margin:10px ;padding: 5px; border-style: double; border-radius: 10px;">
+            <img src = "{{Photo.IMAGE.url}}"  width="100%" height="100%">
+          
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="row" style="margin-top: 10px;">
+        <h2 class="col-sm-12"><a name="diet">My Diet Plans</a></h2>
+        <div class="col-sm-3" style=" margin:10px ; padding: 5px; border-style: double; border-radius: 10px;">
+            <h3>BREAKFAST</h3>
+            {% for BREAKFAST in Breakfasts %}
+                <p>Food : {{BREAKFAST.FOOD}}</p>
+                <p>Protiens : {{BREAKFAST.PROTIEN}}</p>
+                <P>Carbohydrates : {{BREAKFAST.CARBOHYDRATE}}</P>
+                <p>Fats : {{BREAKFAST.FATS}}</p>
+                <center>
+                  <div class="col-sm-6">
+                  <img src = "{{BREAKFAST.IMAGE.url}}" width="100%" height="100%">
+                  </div>
+                  </center>
+            {% endfor %}
+        </div>
+        <div class="col-sm-3" style="  margin:10px ; padding: 5px; border-style: double; border-radius: 10px;">
+            <h3>LUNCH</h3>
+            {% for LUNCH in Lunches %}
+                <p>Food : {{LUNCH.FOOD}}</p>
+                <p>Protiens : {{LUNCH.PROTIEN}}</p>
+                <P>Carbohydrates : {{LUNCH.CARBOHYDRATE}}</P>
+                <p>Fats : {{LUNCH.FATS}}</p>
+                <center>
+                  <div class="col-sm-6">
+                  <img src = "{{LUNCH.IMAGE.url}}" width="100%" height="100%">
+                  </div>
+                  </center>
+            {% endfor %}
+        </div>
+        <div class="col-sm-3" style="  margin:10px ; padding: 5px; border-style: double; border-radius: 10px;">
+            <h3>DINNER</h3>
+            {% for DINNER in Dinner %}
+                <p>Food : {{DINNER.FOOD}}</p>
+                <p>Protiens : {{DINNER.PROTIEN}}</p>
+                <P>Carbohydrates : {{DINNER.CARBOHYDRATE}}</P>
+                <p>Fats : {{DINNER.FATS}}</p>
+                <center>
+                  <div class="col-sm-6">
+                    <img src = "{{DINNER.IMAGE.url}}" width="100%" height="100%">
+                  </div>
+                  </center>
+            {% endfor %}
+        </div>
+        
+  </div>
+    <div class="row" style ="margin-top: 10px;">
+        
+        <h2 class="col-sm-12"><a name="execises">My Exercises</a></h2>
+        <div class="col-sm-3" style=" margin:10px ;padding: 5px; border-style: double; border-radius: 10px;">
+            <h3>Exercises</h3>
+            {% for EXERCISE in Exercises %}
+                <p>Name : {{EXERCISE.EXERCISE_NAME}}</p>
+                <p>Description : {{EXERCISE.DESCRIPTION}}</p>
+                <center>
+                  <div class = "col-sm-8">
+                    <img src = "{{EXERCISE.IMAGE.url}}" width="100%" height="100%">
+                  </div>
+                  </center>
+            {% endfor %}
+        </div>
+
+        
+    </div>
+    <div class="row" style ="margin-top: 10px;">
+        
+        <h2 class="col-sm-12"><a name="events">Events</a></h2>
+        <div class="col-sm-3" style=" margin:10px ;padding: 5px; border-style: double; border-radius: 10px;">
+            <h3>Events</h3>
+            {% for EVENT in Events %}
+                <p>Name : {{EVENT.EVENT_NAME}}</p>
+                <p>Date : {{EVENT.EVENT_DATE}}</p>
+                <P>Start Time : {{EVENT.EVENT_START_TIME}}</P>
+                <p>End Time : {{EVENT.EVENT_END_TIME}}</p>
+                <p>Description: {{EVENT.EVENT_DESCRIPTION}}</p>
+            {% endfor %}
+        </div>
+
+    </div>
+</div>
+
+
+
+<div class="jumbotron text-center" style="margin-bottom:0">
+  <div class = 'col-sm-2' style="float:left">
+    <p id="USER_EMAIL" style = "font-family: monospace;">{{DATA.USER_EMAIL}}</p>
+    <p id = "USER_PHONE_NUMBER" style = "font-family: monospace;">{{DATA.USER_PHONE_NUMBER}}</p>
+  </div>
+</div>
+
+</body>
+</html>
